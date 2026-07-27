@@ -4,14 +4,12 @@ export class MobileControls {
     private scene: Phaser.Scene;
 
     // Movement Joystick (Left)
-    private moveBase!: Phaser.GameObjects.Arc;
     private moveThumb!: Phaser.GameObjects.Arc;
     public moveVector = new Phaser.Math.Vector2(0, 0);
     public isMoving: boolean = false;
     private movePointer: Phaser.Input.Pointer | null = null;
 
     // Aiming Joystick (Right)
-    private aimBase!: Phaser.GameObjects.Arc;
     private aimThumb!: Phaser.GameObjects.Arc;
     public aimAngle: number = 0;
     public isAiming: boolean = false;
@@ -34,7 +32,7 @@ export class MobileControls {
         const moveBaseX = 100;
         const moveBaseY = this.scene.scale.height - 100;
 
-        this.moveBase = this.scene.add.circle(moveBaseX, moveBaseY, baseRadius, 0xFFFFFF, 0.2)
+        this.scene.add.circle(moveBaseX, moveBaseY, baseRadius, 0xFFFFFF, 0.2)
             .setScrollFactor(0).setDepth(2000);
         this.moveThumb = this.scene.add.circle(moveBaseX, moveBaseY, thumbRadius, 0xFFD54F, 0.6)
             .setScrollFactor(0).setDepth(2001);
@@ -43,7 +41,7 @@ export class MobileControls {
         const aimBaseX = this.scene.scale.width - 100;
         const aimBaseY = this.scene.scale.height - 100;
 
-        this.aimBase = this.scene.add.circle(aimBaseX, aimBaseY, baseRadius, 0xFFFFFF, 0.2)
+        this.scene.add.circle(aimBaseX, aimBaseY, baseRadius, 0xFFFFFF, 0.2)
             .setScrollFactor(0).setDepth(2000);
         this.aimThumb = this.scene.add.circle(aimBaseX, aimBaseY, thumbRadius, 0xE0E0E0, 0.6)
             .setScrollFactor(0).setDepth(2001);
